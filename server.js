@@ -11,10 +11,13 @@ const image = require('./controllers/image');
 const db = require('knex')({
   client: 'pg',
   connection: {
-    host: '127.0.0.1',
-    user: 'huongnguyen',
-    password: '',
-    database: 'smart-brain',
+    connectionString: process.env.RENDER_URL,
+    ssl: { rejectUnauthorized: false },
+    host: process.env.RENDER_HOST,
+    port: 5432,
+    user: process.env.RENDER_USER,
+    password: process.env.RENDER_PASSWORD,
+    database: process.env.RENDER_DATABASE,
   },
 });
 
