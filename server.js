@@ -11,13 +11,13 @@ const image = require('./controllers/image');
 const db = require('knex')({
   client: 'pg',
   connection: {
-    connectionString: process.env.RENDER_CONNECTION,
+    connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
-    host: process.env.RENDER_HOST,
+    host: process.env.DATABASE_HOST,
     port: 5432,
-    user: process.env.RENDER_USER,
-    password: process.env.RENDER_PASSWORD,
-    database: process.env.RENDER_DATABASE,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_DB,
   },
 });
 
@@ -38,7 +38,7 @@ app.put('/image', image.handleImage(db));
 
 const PORT = process.env.PORT;
 
-app.listen(3001, () => {
+app.listen(PORT, () => {
   console.log(`app is running on port ${PORT}`);
 });
 
