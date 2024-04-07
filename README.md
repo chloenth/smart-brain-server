@@ -44,7 +44,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Acknowledgments
 
-- [Clarify-AI](https://clarifai.com/explore)
+- [AI-Clarifai Model](https://clarifai.com/clarifai/models)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
