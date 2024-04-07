@@ -15,7 +15,7 @@ The Smart Brain server acts as the backbone of the Smart Brain application, prov
 
 - [![RESTful-API][RESTful-API.com]][RESTful-API-url]
 
-- [![AI-Clarifai-Model][AI-Clarifai-Model.com]][AI-Clarifai-Model-url]
+- [![Clarifai][Clarifai.com]][Clarifai-url]
 
 - [![PostgreSQL][PostgreSQL.org]][PostgreSQL-url]
 
@@ -54,9 +54,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [Node-url]: https://nodejs.org/en
 [RESTful-API.com]: https://img.shields.io/badge/RESTful%20API-20232A?style=for-the-badge
 [RESTful-API-url]: https://konghq.com/learning-center/api-gateway/what-is-restful-api
-[AI-Clarifai-Model.com]: https://img.shields.io/badge/AI--Clarifai%20Model-20232A?style=for-the-badge&logo=clarifai&logoColor=blue
-
-[AI-Clarifai-Model-url] : https://clarifai.com/clarifai/models?searchQuery=face&page=1&perPage=24
+[Clarifai.com]: https://img.shields.io/badge/AI--Clarifai%20Model-20232A?style=for-the-badge&logo=clarifai&logoColor=blue
 [PostgreSQL.org]: https://img.shields.io/badge/PostgreSQL-20232A?style=for-the-badge&logo=postgresql&logoColor=green
-
 [PostgreSQL-url]: https://www.postgresql.org/
