@@ -5,7 +5,7 @@
 The Smart Brain server acts as the backbone of the Smart Brain application, providing the necessary API endpoints to handle requests and responses of the application.
 
 - Handle Requests and Responses, ensuring smooth communication between the Smart Brain application and the server
-- Face Detection with Clarifai API. By fetching data from the Clarifai API, it enables accurate and reliable identification of faces in images processed by the application.
+- Face Detection with Clarifai Model, it enables accurate and reliable identification of faces in images processed by the application.
 - Connect to PostgreSQL Database, enabling fluid interaction with the database for storing and retrieving user information. This connection facilitates efficient data management and ensures the integrity and security of user data.
 - Manage User Authentication and Registration with the database integration. It securely stores user information, handles user authentication requests, and facilitates user registration processes, ensuring a uninterrupted and secure user experience.
 
