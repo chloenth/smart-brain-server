@@ -15,7 +15,7 @@ The Smart Brain server acts as the backbone of the Smart Brain application, prov
 
 - [![RESTful-API][RESTful-API.com]][RESTful-API-url]
 
-- [![Clarifai][Clarifai.com]][Clarifai-url]
+- [![Clarifai][Clarifai.come]][Clarifai-url]
 
 - [![PostgreSQL][PostgreSQL.org]][PostgreSQL-url]
 
