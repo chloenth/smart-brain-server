@@ -34,6 +34,16 @@ The Smart Brain server acts as the backbone of the Smart Brain application, prov
    npm start
    ```
 
+## API Endpoints
+
+| **Endpoint**   | **Method** | **Description**                                                           | **Response Example**                                                         |
+| -------------- | ---------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `/`            | `GET`      | Health check endpoint to verify server is running.                        | `{ "message": "success connection" }`                                        |
+| `/signin`      | `POST`     | Authenticates a user and returns their profile if successful.             | `{ "id": 2, "name": "John Smith", "email": "john@gmail.com", "entries": 0 }` |
+| `/register`    | `POST`     | Registers a new user and returns their profile.                           | `{ "id": 2, "name": "Alice", "email": "alice@example.com" }`                 |
+| `/profile/:id` | `GET`      | Retrieves user details based on their unique `id`.                        | `{ "id": 2, "name": "John Smith", "email": "john@gmail.com" }`               |
+| `/image`       | `PUT`      | Updates the user’s image entry count after a successful image submission. | `{ "entries": 5 }` <br> or <br> `{ "error": "Unable to update entries" }`    |
+
 <!-- LICENSE -->
 
 ## License
