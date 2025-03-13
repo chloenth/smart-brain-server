@@ -44,6 +44,10 @@ checkDbConnection();
 
 const createTablesIfNotExist = async (db) => {
   try {
+    // db.schema
+    //   .dropTableIfExists('login')
+    //   .then(() => console.log('Table "login" has been removed.'))
+    //   .catch((err) => console.error('Error removing table:', err));
     // Check and create login table if it doesn't exist
     const hasLoginTable = await db.schema.hasTable('login');
     if (!hasLoginTable) {
@@ -55,12 +59,18 @@ const createTablesIfNotExist = async (db) => {
     }
 
     // Check and create users table if it doesn't exist
+    // db.schema
+    //   .dropTableIfExists('users')
+    //   .then(() => console.log('Table "users" has been removed.'))
+    //   .catch((err) => console.error('Error removing table:', err));
+
     const hasUsersTable = await db.schema.hasTable('users');
     if (!hasUsersTable) {
       await db.schema.createTable('users', (table) => {
         table.increments('id').primary();
         table.string('name').notNullable();
         table.string('email').unique().notNullable();
+        table.integer('entries').defaultTo(0).notNullable();
         table.timestamp('joined').defaultTo(db.fn.now());
       });
       console.log('Created users table');

@@ -43,10 +43,20 @@ const handleImage = (db) => (req, res) => {
     'https://api.clarifai.com/v2/models/face-detection/outputs',
     returnClarifyRequestOptions(imageUrl)
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        console.log('Fetch failed with status:', response.status);
+        throw new Error('Network response was not ok');
+      }
+
+      return response.json();
+    })
     .then((data) => {
+      console.log('data: ', data);
       const clarifaiFace =
         data.outputs[0].data.regions[0].region_info.bounding_box;
+
+      console.log('clarifaiFace: ', clarifaiFace);
       db('users')
         .returning('*')
         .where({ id })
@@ -55,9 +65,16 @@ const handleImage = (db) => (req, res) => {
         .then((entries) =>
           res.json({ entries: entries[0].entries, clarifaiFace })
         )
-        .catch((err) => res.status(400).json('unable to get entries'));
+        .catch((err) => {
+          console.log(err);
+          res.status(400).json('unable to get entries');
+        });
     })
-    .catch((err) => res.status(400).json('error getting face detection'));
+    .catch((err) => {
+      console.log('i am in catch block');
+      console.log(err);
+      res.status(400).json('error getting face detection');
+    });
 };
 
 module.exports = { handleImage };
