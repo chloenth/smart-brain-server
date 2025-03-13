@@ -17,6 +17,9 @@ const db = require('knex')({
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_DB,
+    ssl: {
+      rejectUnauthorized: false, // Disable certificate verification (for development only)
+    },
   },
 });
 
@@ -24,7 +27,50 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors());
+app.use(cors()); // Enable CORS for all routes
+
+// Function to check database connection
+const checkDbConnection = async () => {
+  try {
+    await db.raw('SELECT 1'); // Executes a simple query to check the connection
+    console.log('Database connected successfully');
+  } catch (err) {
+    console.error('Error connecting to the database:', err.message);
+  }
+};
+
+// Check DB connection on app startup
+checkDbConnection();
+
+const createTablesIfNotExist = async (db) => {
+  try {
+    // Check and create login table if it doesn't exist
+    const hasLoginTable = await db.schema.hasTable('login');
+    if (!hasLoginTable) {
+      await db.schema.createTable('login', (table) => {
+        table.string('email').primary();
+        table.text('hash').notNullable();
+      });
+      console.log('Created login table');
+    }
+
+    // Check and create users table if it doesn't exist
+    const hasUsersTable = await db.schema.hasTable('users');
+    if (!hasUsersTable) {
+      await db.schema.createTable('users', (table) => {
+        table.increments('id').primary();
+        table.string('name').notNullable();
+        table.string('email').unique().notNullable();
+        table.timestamp('joined').defaultTo(db.fn.now());
+      });
+      console.log('Created users table');
+    }
+  } catch (error) {
+    console.error('Error creating tables:', error);
+  }
+};
+
+createTablesIfNotExist(db);
 
 app.get('/', (req, res) => {
   res.json('success connection');
